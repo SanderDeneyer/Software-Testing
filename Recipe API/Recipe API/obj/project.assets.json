@@ -5804,11 +5804,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\sande\\OneDrive\\Documents\\Odisee\\2TI\\Business application development\\Recipe API\\Recipe API\\Recipe API.csproj",
+      "projectUniqueName": "C:\\Users\\sande\\OneDrive\\Documents\\GitHub\\Software-Testing\\Recipe API\\Recipe API\\Recipe API.csproj",
       "projectName": "Recipe API",
-      "projectPath": "C:\\Users\\sande\\OneDrive\\Documents\\Odisee\\2TI\\Business application development\\Recipe API\\Recipe API\\Recipe API.csproj",
+      "projectPath": "C:\\Users\\sande\\OneDrive\\Documents\\GitHub\\Software-Testing\\Recipe API\\Recipe API\\Recipe API.csproj",
       "packagesPath": "C:\\Users\\sande\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\sande\\OneDrive\\Documents\\Odisee\\2TI\\Business application development\\Recipe API\\Recipe API\\obj\\",
+      "outputPath": "C:\\Users\\sande\\OneDrive\\Documents\\GitHub\\Software-Testing\\Recipe API\\Recipe API\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
