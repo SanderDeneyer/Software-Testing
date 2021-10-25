@@ -59,6 +59,14 @@ namespace Recipe_API.Controllers
         public ActionResult<IEnumerable<Recipes>> Search([FromQuery] RecipeSearchOptions searchOptions)
         {
             return _recipeService.Search(searchOptions).ToList();
-        }        
+        }
+
+        [HttpPost("")]
+        public ActionResult<Recipes> CreateRecipe(Recipes recipe)
+        {
+            Recipes created = _recipeService.Create(recipe);
+
+            return CreatedAtAction(nameof(GetRecipe), new { id = created.Id }, created);
+        }
     }
 }
