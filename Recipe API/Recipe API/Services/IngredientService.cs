@@ -35,6 +35,21 @@ namespace Recipe_API.Services
             return ingredient;
         }
 
+        public Ingredient Update(int id, Ingredient ingredient)
+        {
+            Ingredient toUpdate = _context.Ingredients.Find(id);
+            if (toUpdate == null)
+            {
+                return null;
+            }
+            toUpdate.Name = ingredient.Name;
+            toUpdate.Quantity = ingredient.Quantity ;
+            toUpdate.RecipeId = ingredient.RecipeId;
+            toUpdate.Unit = ingredient.Unit;
+            _context.SaveChanges();
+            return toUpdate;
+        }
+
         public void Delete(Ingredient ingredient)
         {
             _context.Ingredients.Remove(ingredient);

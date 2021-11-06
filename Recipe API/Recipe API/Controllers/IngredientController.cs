@@ -6,7 +6,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-// For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+
 
 namespace Recipe_API.Controllers
 {
@@ -21,7 +21,7 @@ namespace Recipe_API.Controllers
             _ingredientService = ingredientService;
         }
 
-        [HttpGet]
+        [HttpGet("")]
         public ActionResult<IEnumerable<Ingredient>> GetAllIngredients()
         {
             return _ingredientService.GetAll().ToList();
@@ -40,18 +40,13 @@ namespace Recipe_API.Controllers
             return ingredient;
         }
 
-        [HttpPost]
+        [HttpPost("")]
         public ActionResult<Ingredient> CreateIngredient(Ingredient ingredient)
         {
             Ingredient created = _ingredientService.Create(ingredient);
 
             return CreatedAtAction(nameof(GetIngredient), new { id = created.Id }, created);
-        }
-
-        [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
-        {
-        }
+        }        
 
         [HttpDelete("{id}")]
         public ActionResult<Ingredient> DeleteIngredient(int id)
@@ -66,6 +61,22 @@ namespace Recipe_API.Controllers
             _ingredientService.Delete(ingredient);
 
             return NoContent();
+        }
+
+        [HttpPut("{id}")]
+        public ActionResult UpdateRecipe(int id, Ingredient updated)
+        {
+            if (id != updated.RecipeId)
+            {
+                return BadRequest();
+            }
+            Ingredient ingredient = _ingredientService.Update(id, updated);
+            if (ingredient == null)
+            {
+                return NotFound();
+            }
+
+            return CreatedAtAction(nameof(GetIngredient), new { id = ingredient.Id }, ingredient);
         }
     }
 }
