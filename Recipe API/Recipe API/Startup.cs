@@ -30,6 +30,7 @@ namespace Recipe_API
         {
             services.AddScoped<RecipeService>();
             services.AddScoped<CategoryService>();
+            services.AddScoped<IngredientService>();
             services.AddDbContext<ApplicationDbContext>(opt => opt.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
 
             services.AddControllers().AddXmlSerializerFormatters();
