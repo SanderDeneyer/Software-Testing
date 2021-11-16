@@ -1,0 +1,553 @@
+{
+	"info": {
+		"_postman_id": "3e795415-2898-4eb4-ade3-c34f0c538d2b",
+		"name": "Recipe API Software Testing",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Basic Tests",
+			"item": [
+				{
+					"name": "Category",
+					"item": [
+						{
+							"name": "Category Get",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "s",
+										"value": "",
+										"type": "text",
+										"disabled": true
+									}
+								],
+								"url": {
+									"raw": "https://localhost:44374/api/category",
+									"protocol": "https",
+									"host": [
+										"localhost"
+									],
+									"port": "44374",
+									"path": [
+										"api",
+										"category"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Category Get (id)",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});\r",
+											"pm.test(\"Body matches string\", function () {\r",
+											"    pm.expect(pm.response.text()).to.include(\"Soepen\");\r",
+											"});\r",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": []
+								},
+								"url": {
+									"raw": "https://localhost:44374/api/category/1",
+									"protocol": "https",
+									"host": [
+										"localhost"
+									],
+									"port": "44374",
+									"path": [
+										"api",
+										"category",
+										"1"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Category Post",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 201\", function () {\r",
+											"    pm.response.to.have.status(201);\r",
+											"});\r",
+											"pm.test('De nieuwe categorie noemt ´Afzakkertjes´', function () {\r",
+											"    var jsonData = pm.response.json();    \r",
+											"    pm.expect(jsonData.name).to.include('Afzakkertjes')    \r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{    \r\n    \"name\": \"Afzakkertjes\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://localhost:44374/api/category",
+									"protocol": "https",
+									"host": [
+										"localhost"
+									],
+									"port": "44374",
+									"path": [
+										"api",
+										"category"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Category Delete",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 204\", function () {\r",
+											"    pm.response.to.have.status(204);\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "https://localhost:44374/api/category/13",
+									"protocol": "https",
+									"host": [
+										"localhost"
+									],
+									"port": "44374",
+									"path": [
+										"api",
+										"category",
+										"13"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Ingredient",
+					"item": [
+						{
+							"name": "Ingredient Post (test data)",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{    \r\n    \"name\": \"Tomaten\",\r\n    \"quantity\": 5,\r\n    \"unit\" : \"\",\r\n    \"recipeId\" : 9\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://localhost:44374/api/ingredient",
+									"protocol": "https",
+									"host": [
+										"localhost"
+									],
+									"port": "44374",
+									"path": [
+										"api",
+										"ingredient"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Ingredient Get",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "https://localhost:44374/api/ingredient",
+									"protocol": "https",
+									"host": [
+										"localhost"
+									],
+									"port": "44374",
+									"path": [
+										"api",
+										"ingredient"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Ingredient Get (id)",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});\r",
+											"var jsonData = pm.response.json();\r",
+											"pm.test('This ingredient is used in the recipe with id number 9', function () {        \r",
+											"    pm.expect(jsonData.recipeId).equals(9);\r",
+											"});\r",
+											"\r",
+											"var unit;\r",
+											"\r",
+											"if(jsonData.unit != null)\r",
+											"{\r",
+											"    unit = jsonData.unit + \" \";\r",
+											"};\r",
+											"\r",
+											"pm.test('This ingredient is ' + jsonData.quantity + \" \" + unit + jsonData.name, function (){        \r",
+											"    pm.expect(jsonData.name).equals(\"Tomaten\");\r",
+											"    pm.expect(jsonData.quantity).equals(5);\r",
+											"    pm.expect(jsonData.unit).to.equals(\"\");\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "https://localhost:44374/api/ingredient/5",
+									"protocol": "https",
+									"host": [
+										"localhost"
+									],
+									"port": "44374",
+									"path": [
+										"api",
+										"ingredient",
+										"5"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Ingredient Post",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 201\", function () {\r",
+											"    pm.response.to.have.status(201);\r",
+											"});\r",
+											"var jsonData = pm.response.json();\r",
+											"pm.test('The new ingredients name is Whiskey', function () {        \r",
+											"    pm.expect(jsonData.name).to.include('Whiskey')    \r",
+											"});\r",
+											"pm.test('This ingredient is used in the recipe with id number 25', function () {        \r",
+											"    pm.expect(jsonData.recipeId).equals(25);\r",
+											"});\r",
+											"\r",
+											"var unit;\r",
+											"\r",
+											"if(jsonData.unit != null)\r",
+											"{\r",
+											"    unit = jsonData.unit + \" \";\r",
+											"};\r",
+											"\r",
+											"pm.test('You need ' + jsonData.quantity + \" \" + unit + \"of it\", function () {        \r",
+											"    pm.expect(jsonData.quantity).equals(100);\r",
+											"    pm.expect(jsonData.unit).equals(\"ml\");\r",
+											"});\r",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{    \r\n    \"name\": \"Whiskey\",\r\n    \"quantity\": 100,\r\n    \"unit\" : \"ml\",\r\n    \"recipeId\" : 25\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://localhost:44374/api/ingredient",
+									"protocol": "https",
+									"host": [
+										"localhost"
+									],
+									"port": "44374",
+									"path": [
+										"api",
+										"ingredient"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Recepi",
+					"item": [
+						{
+							"name": "Recipe Post (test data)",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{    \r\n    \"title\": \"Wkiskey gerookt met eikenhout\",\r\n    \"time\": 10,\r\n    \"dificulty\" : 2,\r\n    \"categoryId\" : 10\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://localhost:44374/api/recipe",
+									"protocol": "https",
+									"host": [
+										"localhost"
+									],
+									"port": "44374",
+									"path": [
+										"api",
+										"recipe"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Recipe Get",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "https://localhost:44374/api/recipe",
+									"protocol": "https",
+									"host": [
+										"localhost"
+									],
+									"port": "44374",
+									"path": [
+										"api",
+										"recipe"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Recipe Get (id)",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "https://localhost:44374/api/recipe/8",
+									"protocol": "https",
+									"host": [
+										"localhost"
+									],
+									"port": "44374",
+									"path": [
+										"api",
+										"recipe",
+										"8"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Recipe Post",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 201\", function () {\r",
+											"    pm.response.to.have.status(201);\r",
+											"});\r",
+											"var jsonData = pm.response.json();\r",
+											"pm.test('Het nieuwe recept noemt ´Garnaalsoep´', function () {        \r",
+											"    pm.expect(jsonData.title).to.include('Garnaalsoep')    \r",
+											"});\r",
+											"pm.test('Het recept voor ' + jsonData.title + \" duurt 15 minuten\" , function () {        \r",
+											"    pm.expect(jsonData.time).equals(15);\r",
+											"});\r",
+											"pm.test( jsonData.title + \" bevat de bijhorende propperties\" , function () {        \r",
+											"    pm.expect(jsonData.dificulty).equals(2);\r",
+											"    pm.expect(jsonData.categoryId).equals(1);\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{    \r\n    \"title\": \"Garnaalsoep\",\r\n    \"time\": 15,\r\n    \"dificulty\" : 2,\r\n    \"categoryId\" : 1\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://localhost:44374/api/recipe/",
+									"protocol": "https",
+									"host": [
+										"localhost"
+									],
+									"port": "44374",
+									"path": [
+										"api",
+										"recipe",
+										""
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Recipe Delete",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 204\", function () {\r",
+											"    pm.response.to.have.status(204);\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "https://localhost:44374/api/recipe/8",
+									"protocol": "https",
+									"host": [
+										"localhost"
+									],
+									"port": "44374",
+									"path": [
+										"api",
+										"recipe",
+										"8"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		}
+	]
+}
